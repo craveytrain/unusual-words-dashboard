@@ -4,17 +4,34 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 import { Provider } from 'react-redux';
 
+import { setWords } from './actions/words';
+
 import App from './components/App';
 
-const initialState = {
-};
+const initialState = {};
 
 // const store = createStore( reducer );
 const store = createStore( reducer, initialState, window.devToolsExtension && window.devToolsExtension() );
 
-// const routes = <Route component={App}>
-//     <Route path="/" component={ChoresContainer}/>
-// </Route>;
+// TODO: not sure this goes here. perhaps a middlware pattern is more appropriate?
+const articles = fetch( '/articles' )
+    .then( response => response.json() )
+    .then( articles => {
+        return articles.articles.reduce( ( prev, curr ) => {
+
+            // for some reasons, concat is broken, hence the hacky push
+            if ( curr.title ) Array.prototype.push.apply( prev, curr.title.split( ' ' ) );
+
+            return prev;
+        }, [] );
+    } )
+    .then( payload => {
+        store.dispatch( setWords( payload ) );
+    } )
+    .catch( err => {
+        console.error( err.stack );
+    } );
+
 
 render(
     <Provider store={store}>

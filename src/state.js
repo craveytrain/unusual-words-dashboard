@@ -1,4 +1,9 @@
 const state = {
+    words: [
+        'asdfasfasfd',
+        'asdfasdfsdaf',
+        'asdfasdfdf'
+    ],
     unusuals: [
         {
             word: 'weird',

@@ -1,5 +1,7 @@
 import Hapi from 'hapi';
 
+import config from './config';
+
 const server = new Hapi.Server();
 server.connection( { port: 3000 } );
 
@@ -39,6 +41,19 @@ server.register(plugins, (err) => {
         path: '/',
         handler: (request, reply) => {
             reply.file('./src/public/index.html');
+        }
+    } );
+
+    server.route( {
+        method: 'GET',
+        path: '/articles', // this includes HMR patches, not just webpack bundle files
+        handler: {
+            proxy: {
+                uri: config.urls.articles
+                // host: 'localhost',
+                // port: 8080,
+                // passThrough: true
+            }
         }
     } );
 
