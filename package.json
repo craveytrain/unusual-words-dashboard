@@ -4,14 +4,15 @@
   "description": "Dashboard for unusual words and their synonyms",
   "main": "server.js",
   "scripts": {
+    "start": "webpack-dev-server",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js)\"",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Mike Cravey <mike@craveytrain.com>",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
@@ -22,11 +23,15 @@
     "jsdom": "^9.5.0",
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.1",
-    "webpack": "^1.13.2"
+    "react-hot-loader": "^3.0.0-beta.3",
+    "transfer-webpack-plugin": "^0.1.4",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.15.1"
   },
   "dependencies": {
     "hapi": "^15.0.3",
     "react": "^15.3.1",
+    "react-redux": "^4.4.5",
     "redux": "^3.6.0"
   }
 }
