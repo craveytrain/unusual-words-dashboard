@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require( 'webpack' );
-const TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -27,7 +26,7 @@ module.exports = {
         filename: 'bundle.js'
     },
     devServer: {
-        contentBase: './src/public',
+        // contentBase: './src/public',
         inline: true,
         hot: true,
         port: 8080,
@@ -35,11 +34,11 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new TransferWebpackPlugin(
-            [
-                { from: 'public' },
-            ],
-            path.resolve( __dirname, 'src' )
-        ),
+        // new TransferWebpackPlugin(
+        //     [
+        //         { from: 'public' },
+        //     ],
+        //     path.resolve( __dirname, 'src' )
+        // ),
   ]
 };
