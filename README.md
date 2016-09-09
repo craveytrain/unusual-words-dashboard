@@ -1,6 +1,6 @@
 # Unusual words
 
-See it in action: <http://unusual-words.herokuapp.com/>
+See it in action: unusual-words.herokuapp.com
 
 ## To run locally
 
