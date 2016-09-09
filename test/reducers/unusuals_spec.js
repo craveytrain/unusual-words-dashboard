@@ -6,7 +6,10 @@ import { setUnusuals, addUnusual, addSynonyms } from '../../src/actions/unusuals
 
 describe( 'unusuals reducer', () => {
     it( 'handles SET_UNUSUALS', () => {
-        const nextState = reducer( undefined, setUnusuals( [ { word: 'weird' } ] ) );
+        const initialState = [ 'normal' ];
+        deepFreeze(initialState);
+
+        const nextState = reducer( initialState, setUnusuals( [ 'weird' ] ) );
 
         expect( nextState ).to.deep.equal( [ { word: 'weird' } ] );
     } );
@@ -50,7 +53,7 @@ describe( 'unusuals reducer', () => {
 
 
     it( 'can be used with reduce', () => {
-        const initialState = [ { word: 'weird' } ];
+        const initialState = [ 'weird' ];
         deepFreeze( initialState );
 
         const actionQueue = [

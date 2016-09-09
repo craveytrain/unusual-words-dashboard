@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import reducer from './reducers';
 import { Provider } from 'react-redux';
 
-import { setWords } from './actions/words';
+import { setUnusuals } from './actions/unusuals';
 
 import App from './components/App';
 
@@ -26,7 +26,7 @@ const articles = fetch( '/articles' )
         }, [] );
     } )
     .then( payload => {
-        store.dispatch( setWords( payload ) );
+        store.dispatch( setUnusuals( payload ) );
     } )
     .catch( err => {
         console.error( err.stack );
