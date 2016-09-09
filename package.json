@@ -1,14 +1,15 @@
 {
   "name": "unusual-words-dashboard",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dashboard for unusual words and their synonyms",
   "main": "server.js",
   "scripts": {
     "start": "NODE_ENV=production node src/server.js",
-    "clean": "rimraf dest",
+    "clean": "rm -rf dest",
     "prebuild": "npm run clean && mkdir -p dest",
     "build": "webpack",
-    "dev": "npm run dev:web & npm run dev:static",
+    "heroku-postbuild": "npm run build",
+    "dev": "NODE_ENV=development npm run dev:web & npm run dev:static",
     "dev:web": "node src/server.js",
     "dev:static": "webpack-dev-server",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js)\"",
@@ -17,7 +18,7 @@
   "author": "Mike Cravey <mike@craveytrain.com>",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.14.0",
+    "babel": "^6.5.2",
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-plugin-transform-object-rest-spread": "^6.8.0",
@@ -31,7 +32,6 @@
     "mocha-junit-reporter": "^1.12.0",
     "react-addons-test-utils": "^15.3.1",
     "react-hot-loader": "^3.0.0-beta.3",
-    "rimraf": "^2.5.4",
     "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
@@ -48,5 +48,8 @@
     "react-redux": "^4.4.5",
     "redux": "^3.6.0",
     "whatwg-fetch": "^1.0.0"
+  },
+  "engines": {
+    "node": "6.3.0"
   }
 }

@@ -29,7 +29,7 @@ const articles = fetch( '/articles' )
         store.dispatch( setUnusuals( payload ) );
     } )
     .catch( err => {
-        console.error( err.stack );
+        throw( err.stack );
     } );
 
 
