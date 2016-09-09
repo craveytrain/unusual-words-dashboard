@@ -16,9 +16,6 @@ Next step is to get site running in heroku in a more production-like way which m
 # install dependencies
 npm install
 
-# start webpack dev server
-npm start
-
-# start web server
+# start local dev servers
 npm run dev
 ```

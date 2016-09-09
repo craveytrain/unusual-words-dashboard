@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require( 'webpack' );
+const config = require('./src/config');
 
 module.exports = {
     entry: [
@@ -21,24 +22,17 @@ module.exports = {
         extensions: [ '', '.js' ]
     },
     output: {
-        path: path.resolve( __dirname, 'dest' ),
-        publicPath: '/static/',
+        path: path.resolve( __dirname, 'dest', 'static' ),
+        publicPath: 'static',
         filename: 'bundle.js'
     },
     devServer: {
-        // contentBase: './src/public',
         inline: true,
         hot: true,
-        port: 8080,
+        port: config.env.development.static.port,
         host: 'localhost'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        // new TransferWebpackPlugin(
-        //     [
-        //         { from: 'public' },
-        //     ],
-        //     path.resolve( __dirname, 'src' )
-        // ),
   ]
 };

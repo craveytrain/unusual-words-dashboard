@@ -4,9 +4,13 @@
   "description": "Dashboard for unusual words and their synonyms",
   "main": "server.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "dev": "NODE_ENV=development babel-node src/server.js",
-    "prod": "babel-node src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "clean": "rimraf dest",
+    "prebuild": "npm run clean && mkdir -p dest",
+    "build": "webpack",
+    "dev": "npm run dev:web & npm run dev:static",
+    "dev:web": "node src/server.js",
+    "dev:static": "webpack-dev-server",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js)\"",
     "test:watch": "npm run test -- --watch"
   },
@@ -26,6 +30,7 @@
     "mocha": "^3.0.2",
     "react-addons-test-utils": "^15.3.1",
     "react-hot-loader": "^3.0.0-beta.3",
+    "rimraf": "^2.5.4",
     "transfer-webpack-plugin": "^0.1.4",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.1"
