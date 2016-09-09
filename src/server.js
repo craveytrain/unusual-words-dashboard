@@ -7,6 +7,7 @@ server.connection( { port: 3000 } );
 
  const plugins = [
     { register: require( 'inert' ) }, // enables serving static files (file and directory handlers)
+    { register: require( 'h2o2' ) },
     {
         register: require( 'good' ),
         options: {
@@ -27,11 +28,6 @@ server.connection( { port: 3000 } );
         }
     }
 ];
-
-// Enable proxying requests to webpack dev server (proxy handler)
-if (process.env.NODE_ENV === 'development') {
-    plugins.push( { register: require( 'h2o2' ) } );
-}
 
 server.register(plugins, (err) => {
     if (err) throw err; // something bad happened loading the plugins
