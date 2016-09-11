@@ -4,8 +4,7 @@ const config = require('./src/config');
 
 module.exports = {
     entry: [
-      'whatwg-fetch',
-      './src/index'
+      './src/client'
     ],
     module: {
         loaders: [
@@ -27,7 +26,7 @@ module.exports = {
     devServer: {
         inline: true,
         hot: true,
-        port: config.env.development.static.port,
+        port: config.servers.static.port,
         host: 'localhost'
     },
     plugins: [

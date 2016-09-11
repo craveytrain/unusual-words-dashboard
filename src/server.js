@@ -1,10 +1,17 @@
-const Hapi = require( 'hapi' );
-const config = require( './config' );
-const server = new Hapi.Server();
+import Hapi from 'hapi';
+import config from './config';
+import websocket from './websocket-server';
+import makeStore from './store';
+import fetchUnusuals from './fetchUnusuals';
 
+const server = new Hapi.Server();
 const env = process.env.NODE_ENV || 'development';
 
-server.connection( { port: process.env.PORT || config.env[env].web.port } );
+const store = makeStore();
+
+fetchUnusuals( store );
+
+server.connection( { port: process.env.PORT || config.servers.web[env].port } );
 
  const plugins = [
     { register: require( 'inert' ) }, // enables serving static files (file and directory handlers)
@@ -30,7 +37,7 @@ server.connection( { port: process.env.PORT || config.env[env].web.port } );
     }
 ];
 
-server.register(plugins, (err) => {
+server.register(plugins, err => {
     if (err) throw err; // something bad happened loading the plugins
 
     server.route( {
@@ -65,7 +72,7 @@ server.register(plugins, (err) => {
         } : {
             proxy: {
                 host: 'localhost',
-                port: config.env.development.static.port,
+                port: config.servers.static.port,
                 passThrough: true
             }
         }
@@ -85,6 +92,8 @@ server.register(plugins, (err) => {
 
     server.start( err => {
         if ( err ) throw err; //something failed with the server starting up
+
+        const wsServer = websocket( store );
 
         server.log('info', `Server running in ${env} mode at ${server.info.uri}`);
     } );

@@ -3,19 +3,20 @@ const config = {
         articles: 'https://auth0.com/docs/meta/articles',
         synonyms: 'http://datamarket.azure.com/dataset/bing/synonyms'
     },
-    env: {
-        production: {
-            web: {
+    servers: {
+        web: {
+            production: {
                 port: 80
+            },
+            development: {
+                port: 3000
             }
         },
-        development: {
-            web: {
-                port: 3000
-            },
-            static: {
-                port: 8080
-            }
+        static: {
+            port: 8080
+        },
+        websocket: {
+            port: 8090
         }
     }
 };
