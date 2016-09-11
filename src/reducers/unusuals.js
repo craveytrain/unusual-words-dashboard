@@ -24,9 +24,6 @@ const unusuals = ( state = [], action ) => {
     switch ( action.type ) {
         case 'SET_UNUSUALS':
             return action.unusuals.map( word => ( { word } ) );
-            // return [
-            //     ...action.unusuals
-            // ];
 
         case 'ADD_UNUSUAL':
             return [
