@@ -15,8 +15,6 @@ const initialState = {};
 // const store = createStore( reducer );
 const store = createStore( reducer, initialState, window.devToolsExtension && window.devToolsExtension() );
 
-// TODO: not sure this goes here. perhaps a middlware pattern is more appropriate?
-
 const socket = io( location.origin );
 
 socket.on('state', state =>
