@@ -4,7 +4,7 @@ const config = require('./src/config');
 
 module.exports = {
     entry: [
-      './src/client'
+        './src/client'
     ],
     module: {
         loaders: [
