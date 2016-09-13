@@ -5,7 +5,6 @@ const redisUrl = process.env.REDIS_URL;
 
 if ( !redisUrl ) throw('No REDIS_URL');
 
-
 promisifyAll(RedisClient.prototype);
 promisifyAll(Multi.prototype);
 
