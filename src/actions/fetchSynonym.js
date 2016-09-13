@@ -12,6 +12,7 @@ const cacheExpires = 31536000; // seconds in 1 year
 export default word => {
     return dispatch => {
         // This is a bit dirty, but helps preserve order and arguments
+        // TODO: need to break this up to test it
         storage.existsAsync( word )
             .then( results => {
                 // If we have it cached, use it
@@ -22,22 +23,31 @@ export default word => {
                     return request( {
                         uri: `http://words.bighugelabs.com/api/2/${bigHugeAPIKey}/${word}/json`
                     } )
-                    .catch() // trap all those errors and shunt them away
                     .then( response => {
-                        return Object.entries( JSON.parse( response ) ).reduce( ( prev, curr ) => {
-                            let syns = curr[ 1 ].syn;
 
-                            if ( syns ) return prev.concat( syns );
+                        // skip non-responses
+                        if ( response ) {
 
-                            return prev;
-                        }, [] );
-                    } )
-                    .then( synonyms => {
-                        // cache as a set
-                        storage.saddAsync( [ word, ...synonyms ] );
+                            // build up the list of synonyms
+                            const synonyms = Object.entries( JSON.parse( response ) ).reduce( ( prev, next ) => {
+                                const grammar = next[ 1 ];
 
-                        // expire it in 1 year, the english langauge is pretty stable
-                        storage.expireAsync( word,  cacheExpires );
+                                // there may not be synonyms
+                                if ( grammar && grammar.syn ) {
+                                    return prev.concat( grammar.syn );
+                                }
+
+                                return prev;
+                            }, [] );
+
+                            if ( synonyms.length ) {
+                                // cache as a set
+                                storage.saddAsync( [ word, ...synonyms ] );
+
+                                // expire it in 1 year, the english langauge is pretty stable
+                                storage.expireAsync( word,  cacheExpires );
+                            }
+                        }
                     } )
                 }
             } )

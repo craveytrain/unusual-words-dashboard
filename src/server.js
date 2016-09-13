@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import Hapi from 'hapi';
 import config from './config';
 import websocket from './websocket-server';
@@ -44,16 +45,6 @@ server.register(plugins, err => {
         path: '/',
         handler: (request, reply) => {
             reply.file('./src/public/index.html');
-        }
-    } );
-
-    server.route( {
-        method: 'GET',
-        path: '/articles', // this includes HMR patches, not just webpack bundle files
-        handler: {
-            proxy: {
-                uri: config.urls.articles
-            }
         }
     } );
 
