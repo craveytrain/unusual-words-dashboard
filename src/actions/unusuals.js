@@ -1,3 +1,6 @@
+import fetchUnusuals from './fetchUnusuals';
+import fetchSynonym from './fetchSynonym';
+
 export const setUnusuals = unusuals => (
 	{
 		type: 'SET_UNUSUALS',
@@ -5,12 +8,12 @@ export const setUnusuals = unusuals => (
 	}
 );
 
-export const addUnusual = word => (
- 	{
-		type: 'ADD_UNUSUAL',
-		word
-	}
-);
+export const fetchSynonyms = words => {
+	return dispatch => {
+		// fetch synonyms for each word
+		words.forEach(word => dispatch( fetchSynonym( word ) ) );
+	};
+}
 
 export const addSynonyms = ( unusual, synonyms ) => (
 	{
@@ -19,3 +22,5 @@ export const addSynonyms = ( unusual, synonyms ) => (
 		synonyms
 	}
 );
+
+export { fetchUnusuals };

@@ -8,3 +8,9 @@ deployment:
     branch: master
     heroku:
       appname: unusual-words
+machine:
+  environment:
+    BIGHUGE_APIKEY: abc
+    REDIS_URL: //localhost:6379
+  services:
+    - redis
