@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Unusual from './Unusual';
 
 export const Unusuals = ( { unusuals } ) => (
     <div>
         <h1>Unusual Words</h1>
         <ul>
-            { unusuals.map( ( unusual, index ) => <li key={index}>{unusual.word}</li> ) }
+            { unusuals.map( ( unusual, index ) => <Unusual key={index} word={unusual.word} children={unusual.synonyms} /> ) }
         </ul>
     </div>
 );

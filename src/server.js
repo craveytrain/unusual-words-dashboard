@@ -2,14 +2,11 @@ import Hapi from 'hapi';
 import config from './config';
 import websocket from './websocket-server';
 import makeStore from './store';
-import fetchUnusuals from './fetchUnusuals';
 
 const server = new Hapi.Server();
 const env = process.env.NODE_ENV || 'development';
 
 const store = makeStore();
-
-fetchUnusuals( store );
 
 server.connection( { port: process.env.PORT || config.servers.web[env].port } );
 

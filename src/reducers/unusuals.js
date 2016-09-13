@@ -1,9 +1,5 @@
 const unusual = ( state, action ) => {
     switch ( action.type ) {
-        case 'ADD_UNUSUAL':
-            return {
-                word: action.word
-            };
 
         case 'ADD_SYNONYMS':
             // this is not the droid you are looking for
@@ -23,13 +19,9 @@ const unusual = ( state, action ) => {
 const unusuals = ( state = [], action ) => {
     switch ( action.type ) {
         case 'SET_UNUSUALS':
-            return action.unusuals.map( word => ( { word } ) );
-
-        case 'ADD_UNUSUAL':
-            return [
-                ...state,
-                unusual( undefined, action )
-            ];
+            return action.unusuals.map( word => {
+                return { word };
+            } );
 
         case 'ADD_SYNONYMS':
             return state.map( u => unusual( u, action ) );

@@ -14,20 +14,6 @@ describe( 'unusuals reducer', () => {
         expect( nextState ).to.deep.equal( [ { word: 'weird' } ] );
     } );
 
-    it( 'handles ADD_UNUSUAL', () => {
-        const initialState = [
-            { word: 'weird' }
-        ];
-        deepFreeze(initialState);
-
-        const nextState = reducer( initialState, addUnusual( 'normal' ) );
-
-        expect( nextState ).to.deep.equal( [
-            { word: 'weird' },
-            { word: 'normal' }
-        ] );
-    } );
-
     it( 'handles ADD_SYNONYMS', () => {
         const initialState = [
             { word: 'weird' },
@@ -58,7 +44,6 @@ describe( 'unusuals reducer', () => {
 
         const actionQueue = [
             setUnusuals( initialState ),
-            addUnusual( 'normal' ),
             addSynonyms( 'weird', [ 'abnormal', 'unusual' ] )
       ];
         const finalState = actionQueue.reduce( reducer, [] );
@@ -70,9 +55,6 @@ describe( 'unusuals reducer', () => {
                     'abnormal',
                     'unusual'
                 ]
-            },
-            {
-                word: 'normal'
             }
         ] );
     } );

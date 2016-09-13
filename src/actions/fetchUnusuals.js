@@ -1,12 +1,12 @@
 import request from 'request-promise';
-import config from './config';
-import { setUnusuals } from './actions/unusuals';
-import storage from './storage';
+import config from '../config';
+import { setUnusuals, fetchSynonyms } from './unusuals';
+import storage from '../storage';
 
-const cacheKey = 'words';
+const cacheKey = 'APP_UNUSUAL_WORDS';
 const cacheExpires = 86400; // seconds in 24 hours
 
-export default store => {
+export default dispatch => {
     // This is a bit dirty, but helps preserve order and arguments
     storage.existsAsync( cacheKey )
         .then( results => {
@@ -42,7 +42,14 @@ export default store => {
         } )
         .then( () => storage.smembersAsync( cacheKey ) ) // using redis set to dedupe and cache, so just fetch
         .then( words => words.sort() ) // Alpha sort since redis sets don't preserve order
-        .then( words => store.dispatch( setUnusuals( words ) ) ) // fire the action
+        .then( words => {
+            dispatch( setUnusuals( words ) ); // save to state
+            return words;
+        } )
+        .then( words => {
+            dispatch( fetchSynonyms( words ) ); // start getting the synonyms
+            return words;
+        } )
         .catch( err => {
             throw( err.stack );
         } );
