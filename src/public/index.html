@@ -1,9 +1,76 @@
-<!doctype html>
-<html>
-<head>
-</head>
-<body>
-  <div id="app"></div>
-  <script src="/static/bundle.js"></script>
-</body>
+<!DOCTYPE html>
+<html class="header-dark">
+  <head>
+    <title>Auth0: Unusual words</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <meta name="google-site-verification" content="4aSwkVvotRegQ6g32k-21r38Fls9sO8VT5LytKdin3o">
+    <meta name="yandex-verification" content="5bf6f6598e8639ca">
+    <meta name="description" content="A universal identity platform for customers, employees and partners">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Identity infrastructure, built for developers">
+    <meta property="og:site_name" content="Auth0">
+    <meta property="og:description" content="A universal identity platform for customers, employees and partners">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://auth0.com">
+    <meta property="og:image" content="https://auth0.com/lib/opengraph/1x-new.png">
+    <meta property="og:image:secure_url" content="https://auth0.com/lib/opengraph/1x-new.png">
+    <meta property="fb:app_id" content="507756515938786">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@auth0">
+    <meta name="twitter:creator" content="@auth0">
+    <meta name="twitter:title" content="Auth0 - Identity infrastructure, for developers">
+    <meta name="twitter:description" content="A universal identity platform for customers, employees and partners">
+    <meta name="twitter:image:src" content="https://auth0.com/lib/twittercard/1x-new.png">
+    <meta name="twitter:image:width" content="1024">
+    <meta name="twitter:image:height" content="512">
+    <link rel="shortcut icon" href="//cdn.auth0.com/styleguide/latest/img/favicon.png">
+    <link href="https://cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet">
+    <link href="/public/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav role="navigation" class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <h1 class="navbar-brand">
+              <a href="https://auth0.com/"><span>Auth0</span></a></h1>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section class="jumbotron has-header">
+      <h1>Unusual Words</h1>
+      <p>Some unusual words used in the titles on the Auth0 blog with some alternative words.</p>
+    </section>
+    <div class="container">
+      <div id="app"><!-- App goes here --></div>
+    </div>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="logo">
+          <img src="https://cdn.auth0.com/styleguide/latest/lib/logos/img/badge.png" width="30">
+        </div>
+      </div>
+    </footer>
+    <script src="/static/bundle.js"></script>
+    <script src="http://cdn.auth0.com/js/lock-8.min.js"></script>
+    <script type="text/javascript">
+      var lock = new Auth0Lock('zEYfpoFzUMEzilhkHilcWoNkrFfJ3hAI', 'auth0.auth0.com');
+      var signup = function () {
+        lock.showSignup({
+          icon: 'http://cdn.auth0.com/styleguide/1.0.0/img/badge.png',
+          callbackURL: 'https://manage.auth0.com/callback',
+          rememberLastLogin: true,
+          integratedWindowsLogin: false,
+          dict: {
+            signup: {
+              footerText: 'By signing up, you agree to our <a href="https://auth0.com/terms" target="_new">terms of service</a> and <a href="https://auth0.com/privacy" target="_new">privacy policy</a>'
+            }
+          }
+        });
+      };
+    </script>
+  </body>
 </html>

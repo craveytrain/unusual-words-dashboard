@@ -4,10 +4,7 @@ import Unusual from './Unusual';
 
 export const Unusuals = ( { unusuals } ) => (
     <div>
-        <h1>Unusual Words</h1>
-        <ul>
-            { unusuals.map( ( unusual, index ) => <Unusual key={index} word={unusual.word} children={unusual.synonyms} /> ) }
-        </ul>
+        { unusuals.map( ( unusual, index ) => <Unusual key={index} word={unusual.word} children={unusual.synonyms} /> ) }
     </div>
 );
 
