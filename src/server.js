@@ -44,7 +44,7 @@ server.register(plugins, err => {
         method: 'GET',
         path: '/',
         handler: (request, reply) => {
-            reply.file('./src/public/index.html');
+            reply.file('./src/public/alt.html');
         }
     } );
 
