@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
@@ -12,8 +13,8 @@ import App from './components/App';
 
 const initialState = {};
 
-// const store = createStore( reducer );
-const store = createStore( reducer, initialState, window.devToolsExtension && window.devToolsExtension() );
+const store = createStore( reducer );
+// const store = createStore( reducer, initialState, window.devToolsExtension && window.devToolsExtension() );
 
 const socket = io( location.origin );
 
