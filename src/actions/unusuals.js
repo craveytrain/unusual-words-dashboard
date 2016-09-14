@@ -1,10 +1,10 @@
 import fetchUnusuals from './fetchUnusuals';
 import fetchSynonym from './fetchSynonym';
 
-export const setUnusuals = unusuals => (
+export const setUnusuals = words => (
 	{
 		type: 'SET_UNUSUALS',
-		unusuals
+		words
 	}
 );
 
@@ -15,10 +15,10 @@ export const fetchSynonyms = words => {
 	};
 }
 
-export const addSynonyms = ( unusual, synonyms ) => (
+export const addSynonyms = ( word, synonyms ) => (
 	{
 		type: 'ADD_SYNONYMS',
-		unusual,
+		word,
 		synonyms
 	}
 );

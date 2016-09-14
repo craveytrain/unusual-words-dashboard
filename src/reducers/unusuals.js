@@ -1,11 +1,13 @@
 const unusual = ( state, action ) => {
+    // this is not the droid you are looking for
+    if ( state.word !== action.word ) return state;
+
     switch ( action.type ) {
 
         case 'ADD_SYNONYMS':
-            // this is not the droid you are looking for
-            if ( state.word !== action.unusual ) return state;
-
             // object spread makes this nice and clean
+
+
             return {
                 ...state,
                 synonyms: action.synonyms
@@ -19,7 +21,7 @@ const unusual = ( state, action ) => {
 const unusuals = ( state = [], action ) => {
     switch ( action.type ) {
         case 'SET_UNUSUALS':
-            return action.unusuals.map( word => {
+            return action.words.map( word => {
                 return { word };
             } );
 
