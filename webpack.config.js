@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require( 'webpack' );
 const config = require('./src/config');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: [
@@ -17,6 +18,7 @@ module.exports = {
     },
     resolve: {
         extensions: [ '', '.js' ]
+
     },
     output: {
         path: path.resolve( __dirname, 'dest', 'static' ),
@@ -31,5 +33,6 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-  ]
+        new Dotenv()
+    ]
 };

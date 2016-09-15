@@ -1,10 +1,23 @@
 import React from 'react';
-import Unusuals from './Unusuals';
+// import React, { PropTypes as T } from 'react';
+import Footer from './Footer';
+import Header from './Header';
 
-const App = () => (
+export default ( props ) => {
+    let children = null;
+    if (props.children) {
+      children = React.cloneElement(props.children, {
+        auth: props.route.auth //sends auth instance to children
+      })
+    }
+
+    return (
     <div>
-        <Unusuals />
-  </div>
-);
-
-export default App;
+        <Header auth={props.route.auth} />
+        <div className="container">
+            {children}
+        </div>
+        <Footer />
+    </div>
+    );
+}

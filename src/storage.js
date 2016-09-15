@@ -1,3 +1,4 @@
+require('dotenv').config();
 import { createClient, RedisClient, Multi } from 'redis';
 import { promisifyAll } from 'bluebird';
 

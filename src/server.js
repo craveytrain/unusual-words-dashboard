@@ -1,3 +1,4 @@
+require('dotenv').config();
 import 'babel-polyfill';
 import Hapi from 'hapi';
 import config from './config';
@@ -42,7 +43,7 @@ server.register(plugins, err => {
 
     server.route( {
         method: 'GET',
-        path: '/',
+        path: '/{path*}',
         handler: (request, reply) => {
             reply.file('./src/public/index.html');
         }
