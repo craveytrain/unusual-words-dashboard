@@ -7,7 +7,7 @@ import App from './App';
 import Login from './Login';
 import Unusuals from './Unusuals';
 
-const auth = new AuthService(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN);
+const auth = new AuthService(process.env.AUTH0_CLIENT_ID, process.env.AUTH0_DOMAIN, hashHistory);
 
 // onEnter callback to validate authentication in private routes
 const requireAuth = ( nextState, replace ) => {
