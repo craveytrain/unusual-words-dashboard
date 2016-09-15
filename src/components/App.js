@@ -14,9 +14,7 @@ export default ( props ) => {
     return (
     <div>
         <Header auth={props.route.auth} />
-        <div className="container">
-            {children}
-        </div>
+        {children}
         <Footer />
     </div>
     );

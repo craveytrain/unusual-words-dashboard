@@ -5,3 +5,21 @@
 .spinner-lg {
   margin: auto;
 }
+
+header.site-header .navbar-toggle {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  header.site-header .navbar-header {
+    float: none;
+  }
+}
+
+@media (min-width: 992px) {
+  footer.site-footer .logo {
+    margin: auto;
+    float: none;
+    text-align: center;
+  }
+}

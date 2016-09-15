@@ -3,10 +3,10 @@ import React, { PropTypes} from 'react';
 import AuthService from '../utils/AuthService'
 
 export const Login = ( { auth } ) => (
-    <div className="try-banner">
-        <span>Please login</span>
-        <button className="btn btn-success" onClick={auth.login.bind(this)}>Login</button>
-    </div>
+    <section className="jumbotron has-header">
+      <h1>Please login</h1>
+      <button className="btn btn-success btn-lg" onClick={auth.login.bind(this)}>Login</button>
+    </section>
 );
 
 Login.PropTypes = {

@@ -8,7 +8,9 @@ export const Unusuals = ( { unusuals } ) => (
           <h1>Unusual Words</h1>
           <p>Some unusual words used in the titles on the Auth0 blog with some alternative words.</p>
         </section>
-        { unusuals.map( ( unusual, index ) => <Unusual key={index} word={unusual.word} children={unusual.synonyms} /> ) }
+        <div className="container">
+            { unusuals.map( ( unusual, index ) => <Unusual key={index} word={unusual.word} children={unusual.synonyms} /> ) }
+        </div>
     </div>
 );
 
