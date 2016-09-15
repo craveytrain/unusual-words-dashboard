@@ -1,13 +1,16 @@
 import React from 'react';
 
-// const Unusual = ( word, synonyms ) => (
 const Unusual = ( { word, children } ) => {
     let subList;
 
-    if ( children && children.length ) {
-        subList = (<ul className="list-inline"> { children.map( ( child, index ) => <li key={index}>{child}</li> ) } </ul>);
+    if ( children ) {
+        if ( children.length ) {
+            subList = (<p>{ children.join( ', ' ) }</p>);
+        } else {
+            subList = (<p className="no-alt">Sorry, no alternatives available.</p>);
+        }
     } else {
-        subList = (<p className="no-alt">Sorry, no alternatives available.</p>)
+        subList = (<div className="spinner spinner-sm"><div className="circle"></div></div>);
     }
 
     return (
