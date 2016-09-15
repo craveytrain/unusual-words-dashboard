@@ -1,4 +1,4 @@
-require('dotenv').config();
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 import 'babel-polyfill';
 import Hapi from 'hapi';
 import config from './config';
