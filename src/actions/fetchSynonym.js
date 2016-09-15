@@ -1,3 +1,4 @@
+require('dotenv').config();
 import request from 'request-promise';
 import config from '../config';
 import { addSynonyms } from './unusuals';

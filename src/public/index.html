@@ -30,51 +30,12 @@
     <link href="/public/main.css" rel="stylesheet" />
   </head>
   <body>
-    <header class="site-header">
-      <nav role="navigation" class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <h1 class="navbar-brand">
-              <a href="https://auth0.com/"><span>Auth0</span></a></h1>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <section class="jumbotron has-header">
-      <h1>Unusual Words</h1>
-      <p>Some unusual words used in the titles on the Auth0 blog with some alternative words.</p>
-    </section>
-    <div class="container">
-      <div id="app">
-        <div class="spinner spinner-lg is-auth0">
-          <div class="circle"></div>
-        </div>
+    <div id="app">
+      <div class="spinner spinner-lg is-auth0">
+        <div class="circle"></div>
       </div>
     </div>
-    <footer class="site-footer">
-      <div class="container">
-        <div class="logo">
-          <img src="https://cdn.auth0.com/styleguide/latest/lib/logos/img/badge.png" width="30">
-        </div>
-      </div>
-    </footer>
+
     <script src="/static/bundle.js"></script>
-    <script src="http://cdn.auth0.com/js/lock-8.min.js"></script>
-    <script type="text/javascript">
-      var lock = new Auth0Lock('zEYfpoFzUMEzilhkHilcWoNkrFfJ3hAI', 'auth0.auth0.com');
-      var signup = function () {
-        lock.showSignup({
-          icon: 'http://cdn.auth0.com/styleguide/1.0.0/img/badge.png',
-          callbackURL: 'https://manage.auth0.com/callback',
-          rememberLastLogin: true,
-          integratedWindowsLogin: false,
-          dict: {
-            signup: {
-              footerText: 'By signing up, you agree to our <a href="https://auth0.com/terms" target="_new">terms of service</a> and <a href="https://auth0.com/privacy" target="_new">privacy policy</a>'
-            }
-          }
-        });
-      };
-    </script>
   </body>
 </html>

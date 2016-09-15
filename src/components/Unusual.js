@@ -1,6 +1,5 @@
 import React from 'react';
 
-// const Unusual = ( word, synonyms ) => (
 const Unusual = ( { word, children } ) => {
     let subList;
 

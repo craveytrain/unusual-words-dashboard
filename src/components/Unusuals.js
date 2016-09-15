@@ -4,11 +4,15 @@ import Unusual from './Unusual';
 
 export const Unusuals = ( { unusuals } ) => (
     <div>
+        <section className="jumbotron has-header">
+          <h1>Unusual Words</h1>
+          <p>Some unusual words used in the titles on the Auth0 blog with some alternative words.</p>
+        </section>
         { unusuals.map( ( unusual, index ) => <Unusual key={index} word={unusual.word} children={unusual.synonyms} /> ) }
     </div>
 );
 
-Unusuals.propTypes = {
+Unusuals.PropTypes = {
   unusuals: PropTypes.arrayOf( PropTypes.shape( {
     word: PropTypes.string.isRequired,
     synonyms: PropTypes.array
